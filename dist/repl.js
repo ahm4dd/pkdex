@@ -3,7 +3,7 @@ import { stdin, stdout } from "node:process";
 const rl = createInterface({
     input: stdin,
     output: stdout,
-    prompt: "pkdex > ",
+    prompt: "Pokedex > ",
 });
 export function cleanInput(input) {
     let trimmedAndSplitted = input.trimEnd().trimStart().split(" ");
@@ -20,7 +20,7 @@ export function startREPL() {
     rl.prompt();
     rl.on("line", (input) => {
         if (input.trim() !== "") {
-            console.log(`Your command was: ${cleanInput(input)[0]}`);
+            console.log(`Your command was: ${cleanInput(input)[0].toLowerCase()}`);
         }
         rl.prompt();
     });
