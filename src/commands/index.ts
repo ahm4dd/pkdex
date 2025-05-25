@@ -2,7 +2,7 @@ import { commandExit } from "./exit.js";
 import { commandHelp } from "./help.js";
 import { CLICommand } from "./types.js";
 
-export const commands: Record<string, CLICommand> = {
+const commands: Record<string, CLICommand> = {
   exit: {
     name: "exit",
     description: "Exit the Pokedex",

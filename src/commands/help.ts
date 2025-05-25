@@ -1,9 +1,12 @@
 import { CLICommand } from "./types.js";
-import { getCommands } from "./index.js";
-export function commandHelp(commands: Record<string, CLICommand>): void {
-  let allCommands: Record<string, CLICommand> = getCommands();
-  console.log("Usage: \n");
-  for (let command in allCommands) {
-    console.log(`${command}: ${allCommands[command].description}`);
+
+export function commandHelp(commands: Record<string, CLICommand>) {
+  console.log();
+  console.log("Welcome to the Pokedex!");
+  console.log("Usage:");
+  console.log();
+  for (const command in commands) {
+    console.log(`${commands[command].name}: ${commands[command].description}`);
   }
+  console.log();
 }

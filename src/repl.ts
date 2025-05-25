@@ -23,18 +23,29 @@ export function cleanInput(input: string): string[] {
 }
 
 export function startREPL(): void {
-  console.log("Welcome to the Pokedex!");
   rl.prompt();
-  rl.on("line", (input: string): void => {
-    input = input.toLowerCase().trim();
-    if (input !== "") {
-      if (input in getCommands()) {
-        let command: CLICommand = getCommands()[input];
-        command.callback({ input: command });
-      } else {
-        console.log("Unknown command");
-      }
+
+  rl.on("line", async (input) => {
+    const words = cleanInput(input);
+    if (words.length === 0) {
+      rl.prompt();
+      return;
     }
+
+    const commandName = words[0];
+
+    const commands = getCommands();
+    const cmd = commands[commandName];
+    if (!cmd) {
+      console.log(
+        `Unknown command: "${commandName}". Type "help" for a list of commands.`,
+      );
+      rl.prompt();
+      return;
+    }
+
+    cmd.callback(commands);
+
     rl.prompt();
   });
 }
