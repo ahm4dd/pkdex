@@ -1,5 +1,7 @@
 import { createInterface } from "node:readline";
 import { stdin, stdout } from "node:process";
+import { getCommands } from "./commands/generalFunctions.js";
+import { CLICommand } from "./commands/types";
 
 const rl = createInterface({
   input: stdin,
@@ -21,10 +23,16 @@ export function cleanInput(input: string): string[] {
 }
 
 export function startREPL(): void {
+  console.log("Welcome to the Pokedex!");
   rl.prompt();
   rl.on("line", (input: string): void => {
-    if (input.trim() !== "") {
-      console.log(`Your command was: ${cleanInput(input)[0].toLowerCase()}`);
+    input = input.toLowerCase().trim();
+    if (input !== "") {
+      if (input in getCommands()) {
+        getCommands()[input].callback();
+      } else {
+        console.log("Unknown command");
+      }
     }
     rl.prompt();
   });
