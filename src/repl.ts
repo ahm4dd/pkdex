@@ -1,7 +1,7 @@
 import { createInterface } from "node:readline";
 import { stdin, stdout } from "node:process";
-import { getCommands } from "./commands/generalFunctions.js";
-import { CLICommand } from "./commands/types.js";
+import { commands } from "./commands/index.js";
+import { isCommand } from "./commands/index.js";
 
 const rl = createInterface({
   input: stdin,
@@ -27,14 +27,11 @@ export function startREPL(): void {
   rl.prompt();
   rl.on("line", (input: string): void => {
     input = input.toLowerCase().trim();
-    if (input !== "") {
-      if (input in getCommands()) {
-        let command: CLICommand = getCommands()[input];
-        command.callback({ input: command });
-      } else {
-        console.log("Unknown command");
-      }
+
+    if (isCommand(input)) {
+      commands[input].callback(commands);
     }
+
     rl.prompt();
   });
 }
