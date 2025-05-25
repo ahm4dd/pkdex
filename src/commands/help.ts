@@ -1,6 +1,6 @@
 import { CLICommand } from "./types.js";
-import { getCommands } from "./generalFunctions.js";
-export function commandHelp(commands: Record<string, CLICommand>): void {
+import { getCommands } from "./index.js";
+export function commandHelp(): void {
   let allCommands: Record<string, CLICommand> = getCommands();
   console.log("Usage: \n");
   for (let command in allCommands) {
