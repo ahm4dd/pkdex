@@ -1,9 +1,12 @@
-import { CLICommand } from "./types.js";
-import { getCommands } from "./generalFunctions.js";
-export function commandHelp(commands: Record<string, CLICommand>): void {
-  let allCommands: Record<string, CLICommand> = getCommands();
+import { createCommand } from "./index.js";
+import { commands } from "./index.js";
+
+export const help = createCommand("help", "Display all commands", () => {
   console.log("Usage: \n");
-  for (let command in allCommands) {
-    console.log(`${command}: ${allCommands[command].description}`);
+
+  const keys = Object.keys(commands) as (keyof typeof commands)[];
+
+  for (let command of keys) {
+    console.log(`${command}: ${commands[command].description}`);
   }
-}
+});
