@@ -1,5 +1,3 @@
-import { createInterface } from "node:readline";
-import { stdin, stdout } from "node:process";
 import { State } from "./state.js";
 
 export function cleanInput(input: string): string[] {
