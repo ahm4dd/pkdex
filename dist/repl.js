@@ -1,6 +1,6 @@
 import { createInterface } from "node:readline";
 import { stdin, stdout } from "node:process";
-import { getCommands } from "./commands/generalFunctions.js";
+import { getCommands } from "./commands/index.js";
 const rl = createInterface({
     input: stdin,
     output: stdout,
