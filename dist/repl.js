@@ -24,7 +24,8 @@ export function startREPL() {
         input = input.toLowerCase().trim();
         if (input !== "") {
             if (input in getCommands()) {
-                getCommands()[input].callback();
+                let command = getCommands()[input];
+                command.callback({ input: command });
             }
             else {
                 console.log("Unknown command");

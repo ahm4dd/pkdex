@@ -1,7 +1,8 @@
 import { getCommands } from "./generalFunctions.js";
-export function helpCommand() {
-    let commands = getCommands();
-    for (let command in commands) {
-        console.log(`${command}: ${commands[command].description}`);
+export function helpCommand(commands) {
+    let allCommands = getCommands();
+    console.log("Usage: \n");
+    for (let command in allCommands) {
+        console.log(`${command}: ${allCommands[command].description}`);
     }
 }
