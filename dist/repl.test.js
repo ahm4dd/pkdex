@@ -6,8 +6,8 @@ describe.each([
         expected: ["hello", "world"],
     },
     {
-        input: "     hey             ahmed",
-        expected: ["hey", "ahmed"],
+        input: "     hey             skid",
+        expected: ["hey", "skid"],
     },
     {
         input: " I                  love                    life",
