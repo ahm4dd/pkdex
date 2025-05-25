@@ -1,9 +1,10 @@
-import { CLICommand } from "./types.js";
-import { getCommands } from "./index.js";
+import { Command } from "./types.js";
+import { getCommands, isCommand } from "./index.js";
 export function commandHelp(): void {
-  let allCommands: Record<string, CLICommand> = getCommands();
+  const allCommands = getCommands();
   console.log("Usage: \n");
-  for (let command in allCommands) {
-    console.log(`${command}: ${allCommands[command].description}`);
+  const commandKeys = Object.keys(getCommands()) as Command[];
+  for (const commandKey of commandKeys) {
+    console.log(`${commandKey}: ${allCommands[commandKey].description}`);
   }
 }
