@@ -1,5 +1,5 @@
 import { commandExit } from "./exit.js";
-import { helpCommand } from "./help.js";
+import { commandHelp } from "./help.js";
 import { CLICommand } from "./types.js";
 
 export function getCommands(): Record<string, CLICommand> {
@@ -13,7 +13,7 @@ export function getCommands(): Record<string, CLICommand> {
     help: {
       name: "help",
       description: "Displays a help message",
-      callback: helpCommand,
+      callback: commandHelp,
     },
   };
 }
