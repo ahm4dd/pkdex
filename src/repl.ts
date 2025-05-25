@@ -1,13 +1,6 @@
 import { createInterface } from "node:readline";
 import { stdin, stdout } from "node:process";
-import { getCommands } from "./commands/index.js";
-import { CLICommand } from "./commands/types.js";
-
-const rl = createInterface({
-  input: stdin,
-  output: stdout,
-  prompt: "Pokedex > ",
-});
+import { State } from "./state.js";
 
 export function cleanInput(input: string): string[] {
   let trimmedAndSplitted: string[] = input.trimEnd().trimStart().split(" ");
@@ -22,30 +15,30 @@ export function cleanInput(input: string): string[] {
   return result;
 }
 
-export function startREPL(): void {
-  rl.prompt();
+export function startREPL(state: State): void {
+  state.rlInterface.prompt();
 
-  rl.on("line", async (input) => {
+  state.rlInterface.on("line", async (input) => {
     const words = cleanInput(input);
     if (words.length === 0) {
-      rl.prompt();
+      state.rlInterface.prompt();
       return;
     }
 
     const commandName = words[0];
 
-    const commands = getCommands();
+    const commands = state.commands;
     const cmd = commands[commandName];
     if (!cmd) {
       console.log(
         `Unknown command: "${commandName}". Type "help" for a list of commands.`,
       );
-      rl.prompt();
+      state.rlInterface.prompt();
       return;
     }
 
-    cmd.callback(commands);
+    cmd.callback(state);
 
-    rl.prompt();
+    state.rlInterface.prompt();
   });
 }

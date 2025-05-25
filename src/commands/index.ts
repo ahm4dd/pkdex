@@ -1,6 +1,6 @@
 import { commandExit } from "./exit.js";
 import { commandHelp } from "./help.js";
-import { CLICommand } from "./types.js";
+import { CLICommand } from "src/state.js";
 
 const commands: Record<string, CLICommand> = {
   exit: {
