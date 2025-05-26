@@ -1,2 +1,2 @@
 import { State } from "src/state";
-export function commandMap(state: State): void {}
+export async function commandMap(state: State): Promise<void> {}

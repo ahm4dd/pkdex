@@ -1,3 +1,4 @@
+import { PokeAPI } from "./pokeapi.js";
 import { State } from "./state.js";
 
 export function cleanInput(input: string): string[] {
@@ -24,7 +25,8 @@ export function startREPL(state: State): void {
     }
 
     const commandName = words[0];
-
+    //const api = new PokeAPI();
+    //console.log((await api.fetchLocations()).results);
     const commands = state.commands;
     const cmd = commands[commandName];
     if (!cmd) {
@@ -34,8 +36,11 @@ export function startREPL(state: State): void {
       state.rlInterface.prompt();
       return;
     }
-
-    cmd.callback(state);
+    try {
+      await cmd.callback(state);
+    } catch (e) {
+      console.log(`${e}`);
+    }
 
     state.rlInterface.prompt();
   });
