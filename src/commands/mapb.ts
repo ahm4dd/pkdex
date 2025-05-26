@@ -1,11 +1,11 @@
 import { State } from "src/state.js";
 
-export async function commandMap(state: State): Promise<void> {
+export async function commandMapb(state: State): Promise<void> {
   try {
     const locations = await state.pokeapi.fetchLocations(
-      state.nextLocationURL?.toString(),
+      state.prevLocationURL?.toString(),
     );
-    state.nextLocationURL = locations.next ?? null;
+    state.nextLocationURL = locations.next;
     state.prevLocationURL = locations.previous ?? null;
     for (const location of locations.results) {
       console.log(location.name);

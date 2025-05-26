@@ -27,7 +27,7 @@ export class PokeAPI {
   }
 }
 
-type locationResult = {
+export type LocationResult = {
   name: string;
   url: URL;
 };
@@ -35,11 +35,12 @@ type locationResult = {
 export type ShallowLocations = {
   count: number;
   next: URL;
-  results: Record<number, locationResult>[];
+  results: LocationResult[];
+  previous?: URL;
 };
 
 export type Location = {
   id: number;
   name: string;
-  location: locationResult;
+  location: LocationResult;
 };
