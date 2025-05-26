@@ -6,11 +6,11 @@ export type CacheEntry<T> = {
 export class Cache {
   #cache = new Map<string, CacheEntry<any>>();
 
-  function add<T>(key: string, val: T) {
+  constructor() {}
 
+  add<T>(key: string, val: T) {
+    this.#cache.set(key, { createdAt: Date.now(), val });
   }
 
-  function get<T>(key: string) : T | undefined {
-
-  }
+  get<T>(key: string): T | undefined {}
 }
