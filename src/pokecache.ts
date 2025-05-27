@@ -27,14 +27,19 @@ export class Cache {
   }
 
   #reap() {
-    for (const key in this.#cache.keys()) {
-      if (this.#cache.get(key)!.createdAt < Date.now() - this.#interval) {
-        this.#cache.delete(key);
+    try {
+      const now = Date.now();
+      for (const [key, value] of this.#cache.entries()) {
+        if (value.createdAt < now - this.#interval) {
+          this.#cache.delete(key);
+        }
       }
+    } catch (e) {
+      console.log(`${e}`);
     }
   }
 
   #startReapLoop() {
-    this.#reapIntervalId = setInterval(this.#reap, this.#interval);
+    this.#reapIntervalId = setInterval(() => this.#reap(), this.#interval);
   }
 }
