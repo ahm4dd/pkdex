@@ -2,6 +2,7 @@ import { createInterface, type Interface } from "readline";
 import { stdin, stdout } from "node:process";
 import { getCommands } from "./commands/index.js";
 import { PokeAPI } from "./pokeapi.js";
+import { Cache } from "src/pokecache.js";
 
 export type CLICommand = {
   name: string;
@@ -15,6 +16,7 @@ export type State = {
   pokeapi: PokeAPI;
   nextLocationURL: URL | null;
   prevLocationURL: URL | null;
+  cache: Cache;
 };
 
 export function initState(): State {
@@ -28,6 +30,7 @@ export function initState(): State {
     pokeapi: new PokeAPI(),
     nextLocationURL: new URL("https://pokeapi.co/api/v2/location-area"),
     prevLocationURL: null,
+    cache: new Cache(60000),
   };
   return state;
 }
