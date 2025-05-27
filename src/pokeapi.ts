@@ -34,8 +34,8 @@ export type LocationResult = {
 
 export type ShallowLocations = {
   count: number;
-  next: URL;
   results: LocationResult[];
+  next?: URL;
   previous?: URL;
 };
 

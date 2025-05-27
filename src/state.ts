@@ -2,7 +2,7 @@ import { createInterface, type Interface } from "readline";
 import { stdin, stdout } from "node:process";
 import { getCommands } from "./commands/index.js";
 import { PokeAPI } from "./pokeapi.js";
-import { Cache } from "src/pokecache.js";
+import { Cache } from "./pokecache.js";
 
 export type CLICommand = {
   name: string;
