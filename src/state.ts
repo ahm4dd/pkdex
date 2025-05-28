@@ -17,6 +17,7 @@ export type State = {
   nextLocationURL: URL | null;
   prevLocationURL: URL | null;
   cache: Cache;
+  commandArg: string;
 };
 
 export function initState(): State {
@@ -31,6 +32,7 @@ export function initState(): State {
     nextLocationURL: new URL("https://pokeapi.co/api/v2/location-area"),
     prevLocationURL: null,
     cache: new Cache(60000),
+    commandArg: "",
   };
   return state;
 }

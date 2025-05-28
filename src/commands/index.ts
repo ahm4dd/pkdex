@@ -3,6 +3,7 @@ import { commandHelp } from "./help.js";
 import { CLICommand } from "src/state.js";
 import { commandMap } from "./map.js";
 import { commandMapb } from "./mapb.js";
+import { commandExplore } from "./explore.js";
 
 const commands: Record<string, CLICommand> = {
   exit: {
@@ -29,6 +30,13 @@ const commands: Record<string, CLICommand> = {
     description:
       "It displays the names of the 20 previous location areas in the Pokemon world. Each subsequent call to the map should display the previous 20 locations.",
     callback: commandMapb,
+  },
+
+  explore: {
+    name: "explore",
+    description:
+      "Explores a specific location area and then returns the existing Pokemons in said location.",
+    callback: commandExplore,
   },
 };
 

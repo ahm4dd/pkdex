@@ -24,7 +24,9 @@ export function startREPL(state: State): void {
     }
 
     const commandName = words[0];
+    const commandArg = words[1] ?? "";
     const commands = state.commands;
+    state.commandArg = commandArg;
     const cmd = commands[commandName];
     if (!cmd) {
       console.log(

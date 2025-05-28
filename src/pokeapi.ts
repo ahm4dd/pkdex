@@ -39,13 +39,7 @@ export type ShallowLocations = {
   previous?: URL;
 };
 
-export type Location = {
-  id: number;
-  name: string;
-  location: LocationResult;
-};
-
-export interface Root {
+export interface Location {
   encounter_method_rates: EncounterMethodRate[];
   game_index: number;
   id: number;
