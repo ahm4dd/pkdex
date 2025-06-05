@@ -26,6 +26,80 @@ The application uses PokéAPI, a comprehensive RESTful API providing structured 
 - **[JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON)** - Data interchange format
 - **[PokéAPI](https://pokeapi.co/docs/v2)** - Pokémon data service
 
+
+
+## Installation
+
+### Prerequisites
+- **Node Version Manager (NVM)** - Recommended for Node.js version management
+- **Node.js** (version 14.0 or higher)
+- **npm** (Node Package Manager)
+
+### Node.js Setup with NVM
+
+#### Installing NVM
+
+**On macOS/Linux:**
+```bash
+# Install NVM using curl
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+
+# Or using wget
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+```
+
+**On Windows:**
+```powershell
+# Install nvm-windows from GitHub releases
+# Download and install from: https://github.com/coreybutler/nvm-windows/releases
+```
+
+#### Installing and Using Node.js
+
+```bash
+# Restart your terminal or source your profile
+source ~/.bashrc  # or ~/.zshrc
+
+# Install the latest LTS version of Node.js
+nvm install --lts
+
+# Use the installed Node.js version
+nvm use --lts
+
+# Verify installation
+node --version
+npm --version
+```
+
+### Project Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/ahm4dd/pkdex.git
+   cd pkdex
+   ```
+
+2. **Use the correct Node.js version**
+   ```bash
+   # Use the Node version in .nvmrc
+   nvm use
+   ```
+
+3. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+4. **Build the application**
+   ```bash
+   npm run build
+   ```
+
+5. **Start the application**
+   ```bash
+   npm run start
+   ```
+
 ## Command Reference
 
 ### Navigation Commands
